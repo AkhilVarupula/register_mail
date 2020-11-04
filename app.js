@@ -7,9 +7,16 @@ var connection = mysql.createConnection({
   password:'mymacmysql',
   insecureAuth : true
 });
-q='SELECT CURDATE() AS date';
-connection.query(q, function(error, results, fields) {
+var data=[];
+for(var i=0; i<500; i++){
+data.push([
+  faker.internet.email(),
+  faker.date.past()
+])
+}
+q='INSERT INTO users (email, created_at) VALUES ?';
+connection.query(q, [data],function(error, results) {
     if (error) throw error;
-    console.log(results[0].date);
+    console.log(results);
   });
   connection.end();
