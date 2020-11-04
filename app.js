@@ -4,7 +4,7 @@ var connection = mysql.createConnection({
   host: "localhost",
   user: "root",
   database:"node_project",
-  password:'mymacmysql',
+  password:'',
   insecureAuth : true
 });
 var data=[];
